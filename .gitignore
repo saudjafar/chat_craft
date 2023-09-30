@@ -1,3 +1,7 @@
+#hide API key on gitHub
+.env
+.env.local
+
 # Miscellaneous
 *.class
 *.log
