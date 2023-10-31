@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:chat_craft/screens/chat_screen.dart';
-import 'package:chat_craft/screens/home_screen.dart';
+import 'package:chat_craft/screens/craft_screen.dart';
 import 'package:chat_craft/screens/intro_screen.dart';
 import 'providers/active_theme_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_config/flutter_config.dart';
 
 import 'constants/themes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FlutterConfig.loadEnvVariables();
+
   runApp(const ProviderScope(child: App()));
 }
 
@@ -27,7 +32,7 @@ class App extends ConsumerWidget {
       routes: {
         '/': (context) => const IntroScreen(),
         '/a': (context) => const ChatScreen(),
-        '/b': (context) => const HomeScreen(),
+        '/b': (context) => const CraftScreen(),
       },
     );
   }

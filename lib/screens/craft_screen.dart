@@ -6,14 +6,14 @@ import 'package:chat_craft/widgets/image_download_button.dart';
 import 'package:chat_craft/widgets/image_container.dart';
 import 'package:chat_craft/widgets/my_app_bar.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class CraftScreen extends StatefulWidget {
+  const CraftScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<CraftScreen> createState() => _CraftScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CraftScreenState extends State<CraftScreen> {
   final aiHandler = AIHandler();
   String? _imageUrl;
   bool _isGenerating = false;
@@ -28,7 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(),
+      appBar: const MyAppBar(
+        title: 'CraftAI',
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(

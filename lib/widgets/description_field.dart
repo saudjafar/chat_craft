@@ -27,35 +27,48 @@ class _DescriptionFieldState extends State<DescriptionField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: _descController,
-      focusNode: _focusNode,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(
-            color: Colors.white,
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            controller: _descController,
+            focusNode: _focusNode,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                borderRadius: BorderRadius.circular(
+                  12,
+                ),
+              ),
+              hintText: 'Input a description',
+            ),
           ),
         ),
-        hintText: 'Input a description',
-        suffixIcon: IconButton(
-          splashRadius: 20,
-          onPressed: widget._isGenerating
-              ? null
-              : () {
-                  _focusNode.unfocus();
-                  final desc = _descController.text;
-                  _descController.clear();
-                  widget._onSubmitted(desc);
-                },
-          icon: const Icon(
-            Icons.send,
-          ),
+        const SizedBox(
+          width: 06,
         ),
-      ),
+        ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              foregroundColor: Theme.of(context).colorScheme.onSecondary,
+              shape: const CircleBorder(),
+              padding: const EdgeInsets.all(15),
+            ),
+            onPressed: widget._isGenerating
+                ? null
+                : () {
+                    _focusNode.unfocus();
+                    final desc = _descController.text;
+                    _descController.clear();
+                    widget._onSubmitted(desc);
+                  },
+            child: const Icon(Icons.send))
+      ],
     );
   }
 }

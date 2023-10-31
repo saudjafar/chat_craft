@@ -11,18 +11,20 @@ class GlobalDrawer extends StatelessWidget {
         children: <Widget>[
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.deepOrange,
+              // color: Theme.of(context).colorScheme.primary
             ),
             child: Text(
               'Menu',
               style: TextStyle(
                 color: Colors.white,
+                // color: Theme.of(context).colorScheme.onPrimary,
                 fontSize: 24,
               ),
             ),
           ),
           ListTile(
-            title: const Text('Open ChatGPT Screen'),
+            title: const Text('Open ChatAI'),
             onTap: () {
               // Close the drawer and navigate to A.dart
               // Navigator.pop(context);
@@ -36,7 +38,7 @@ class GlobalDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Open ImageGen Screen'),
+            title: const Text('Open CraftAI'),
             onTap: () {
               // // Close the drawer and navigate to B.dart
               // Navigator.pop(context);

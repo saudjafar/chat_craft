@@ -3,22 +3,14 @@ import '../providers/active_theme_provider.dart';
 import 'theme_switch.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
-
-  const MyAppBar({super.key, required this.title});
+class IntroAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const IntroAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        icon: const Icon(Icons.menu), // Hamburger menu icon
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
-      ),
       title: Text(
-        title,
+        'ChatCraft',
         style: TextStyle(
           color: Theme.of(context).colorScheme.onPrimary,
         ),
