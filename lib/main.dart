@@ -4,14 +4,12 @@ import 'package:chat_craft/screens/craft_screen.dart';
 import 'package:chat_craft/screens/intro_screen.dart';
 import 'providers/active_theme_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_config/flutter_config.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'constants/themes.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await FlutterConfig.loadEnvVariables();
+Future main() async {
+  await dotenv.load(fileName: ".env");
 
   runApp(const ProviderScope(child: App()));
 }

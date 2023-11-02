@@ -109,12 +109,15 @@ class _TextAndVoiceFieldState extends ConsumerState<TextAndVoiceField> {
 
   void sendTextMessage(String message) async {
     setReplyingState(true);
-    addToChatList(message, true, DateTime.now().toString());
-    addToChatList('Typing...', false, 'typing');
+    //my response no animation
+    addToChatList(message, true, DateTime.now().toString(), false);
+    //typing text has animation
+    addToChatList('Typing...', false, 'typing', true);
     setInputMode(InputMode.voice);
     final aiResponse = await _openAI.getResponse(message);
     removeTyping();
-    addToChatList(aiResponse, false, DateTime.now().toString());
+    // ai response has animation
+    addToChatList(aiResponse, false, DateTime.now().toString(), true);
     setReplyingState(false);
   }
 
@@ -135,12 +138,13 @@ class _TextAndVoiceFieldState extends ConsumerState<TextAndVoiceField> {
     chats.removeTyping();
   }
 
-  void addToChatList(String message, bool isMe, String id) {
+  void addToChatList(String message, bool isMe, String id, bool isAnimated) {
     final chats = ref.read(chatsProvider.notifier);
     chats.add(ChatModel(
       id: id,
       message: message,
       isMe: isMe,
+      isAnimated: isAnimated,
     ));
   }
 }

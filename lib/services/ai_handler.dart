@@ -1,14 +1,7 @@
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
-import 'package:flutter_config/flutter_config.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
-// Future<void> loadEnvironmentVariables() async {
-//   await dotenv.load(fileName: ".env");
-// }
-String? apiKey = "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";
-// String? apiKey = dotenv.env['API_KEY'];
-
-//String? apiKey = FlutterConfig.get('API_KEY');
+String? apiKey = dotenv.env['API_KEY'];
 
 class AIHandler {
   final _openAI = OpenAI.instance.build(

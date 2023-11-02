@@ -27,6 +27,8 @@ class ChatScreen extends StatelessWidget {
                 itemBuilder: (context, index) => ChatItem(
                   text: chats[index].message,
                   isMe: chats[index].isMe,
+                  // TODO:fix animation bug
+                  isAnimated: false,
                 ),
               );
             }),

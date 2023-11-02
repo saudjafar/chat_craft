@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class ChatItem extends StatelessWidget {
   final String text;
   final bool isMe;
+  final bool isAnimated;
+
   const ChatItem({
     super.key,
     required this.text,
     required this.isMe,
+    required this.isAnimated,
   });
 
   @override
@@ -39,12 +43,31 @@ class ChatItem extends StatelessWidget {
                 bottomRight: Radius.circular(isMe ? 0 : 15),
               ),
             ),
-            child: Text(
-              text,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSecondary,
-              ),
-            ),
+            // child: Text(
+            //   text,
+            //   style: TextStyle(
+            //     color: Theme.of(context).colorScheme.onSecondary,
+            //   ),
+            // ),
+            child: isAnimated
+                ? AnimatedTextKit(
+                    isRepeatingAnimation: false,
+                    displayFullTextOnTap: true,
+                    animatedTexts: [
+                      TyperAnimatedText(
+                        text,
+                        textStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.onSecondary,
+                        ),
+                      ),
+                    ],
+                  )
+                : Text(
+                    text,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary,
+                    ),
+                  ),
           ),
           if (isMe) const SizedBox(width: 15),
           if (isMe) ProfileContainer(isMe: isMe),
